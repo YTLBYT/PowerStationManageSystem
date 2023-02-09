@@ -1,0 +1,194 @@
+<template>
+  <div>
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item>用户信息</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-main>
+      <div style="padding: 10px 0;">
+        <el-input
+            placeholder="请输入内容"
+            suffix-icon="el-icon-search"
+            v-model="input"
+            style="width: 200px; margin-top: 0px">
+        </el-input>
+        <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
+        <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> 重置</el-button>
+        <el-button type="primary" icon="el-icon-circle-plus-outline" style="float: right" @click="handleAdd()">新增
+        </el-button>
+      </div>
+      <el-table :data="tableData"
+                :cell-style="rowStyle"
+                stripe row-key="id"
+                default-expand-all>
+        <el-table-column prop="id" label="序号" width="80" align="center"></el-table-column>
+        <el-table-column prop="userName" label="用户名" align="center"></el-table-column>
+        <el-table-column prop="telephone" label="手机号" align="center"></el-table-column>
+        <el-table-column prop="role" label="角色" align="center"></el-table-column>
+        <el-table-column prop="stationId" label="所属换电站id" align="center"></el-table-column>
+        <el-table-column prop="status" label="状态" align="center">
+          <template v-slot="scope">
+            <el-switch
+                v-model= 'scope.row.status'
+                @change="changeStatus(scope.row)"
+                active-color="#13ce66"
+                inactive-color="#ff4949"
+                :active-value = "1"
+                :inactive-value="0">
+            </el-switch>
+          </template>
+        </el-table-column>
+        <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
+        <el-table-column label="操作" align="center">
+          <template v-slot="scope">
+            <!--          scope.row 就是当前行数据-->
+            <el-button type="primary" @click="$router.push('/userEdit?id=' + scope.row.id)">编辑</el-button>
+            <el-popconfirm
+                style="margin-left: 5px"
+                title="您确定删除这行数据吗？"
+                @confirm="del(scope.row.id)"
+            >
+              <el-button type="danger" slot="reference">删除</el-button>
+            </el-popconfirm>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <!--    分页-->
+      <div style="margin-top: 20px">
+        <el-pagination
+            background
+            :current-page="params.pageNum"
+            :page-size="params.pageSize"
+            layout="prev, pager, next"
+            @current-change="handleCurrentChange"
+            :total="total">
+        </el-pagination>
+      </div>
+    </el-main>
+  </div>
+</template>
+
+<script>
+import request from "@/utils/request";
+import Cookies from 'js-cookie'
+
+export default {
+  name: 'Video',
+  data() {
+    return {
+      admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
+      tableData: [{
+        id: 1,
+        userName: '杨涛',
+        telephone: '15378590469',
+        role: '管理员',
+        status: 1
+      },
+        {
+          id: 2,
+          userName: '杨涛',
+          telephone: '15378590469',
+          role: '换电站管理员',
+          stationId: '448548',
+          status: 1
+        },
+        {
+          id: 3,
+          userName: '杨涛',
+          telephone: '15378590469',
+          role: '用户',
+          status: 1
+        }
+      ],
+      total: 0,
+      params: {
+        pageNum: 1,
+        pageSize: 10,
+        name: '',
+        stationNo: ''
+      }
+    }
+  },
+  created() {
+    this.load()
+  },
+  methods: {
+    /**
+     * 默认加载全部
+     */
+    load() {
+      request.get('/station/page', {
+        params: this.params
+      }).then(res => {
+        if (res.code === '200') {
+          this.tableData = res.data.list
+          this.total = res.data.total
+        }
+      })
+    },
+    /**
+     * 点击重置按钮恢复全部查询
+     */
+    reset() {
+      this.params = {
+        pageNum: 1,
+        pageSize: 10,
+        bookName: '',
+        bookNo: '',
+        userName: ''
+      }
+      this.load()
+    },
+    handleCurrentChange(pageNum) {
+      // 点击分页按钮触发分页
+      this.params.pageNum = pageNum
+      this.load()
+    },
+
+    /**
+     * 删除当前行
+     * @param id
+     */
+    del(id) {
+      request.delete("/station/delete/" + id).then(res => {
+        if (res.code === '200') {
+          this.$notify.success('删除成功')
+          this.load()
+        } else {
+          this.$notify.error(res.msg)
+        }
+      })
+    },
+    /**
+     * 改变状态
+     * @param row
+     */
+    changeStatus(row){
+      request.put('/station/update', row).then(res => {
+        if (res.code === '200') {
+          this.$notify.success('操作成功')
+          this.load()
+        } else {
+          this.$notify.error(res.msg)
+        }
+      })
+    },
+
+    //添加函数，跳转到添加列表
+    handleAdd(){
+      this.$router.push("/userAdd");
+    },
+
+    //风格函数，使文字居中
+    rowStyle() {
+      return "text-align:center";
+    },
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
