@@ -7,12 +7,8 @@
     </el-breadcrumb>
     <el-main>
       <div style="padding: 10px 0;">
-        <el-input
-            placeholder="请输入内容"
-            suffix-icon="el-icon-search"
-            v-model="input"
-            style="width: 200px; margin-top: 0px">
-        </el-input>
+        <el-input placeholder="请输入换电站名称" suffix-icon="el-icon-search" v-model="params.stationName" style="width: 200px; margin-top: 0px"></el-input>
+        <el-input placeholder="请输入换电站编号" suffix-icon="el-icon-search" v-model="params.stationNumber" style="width: 200px; margin-top: 0px"></el-input>
         <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
         <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> 重置</el-button>
         <el-button type="primary" icon="el-icon-circle-plus-outline" style="float: right" @click="handleAdd()">新增
@@ -20,14 +16,15 @@
       </div>
       <el-table :data="tableData"
                 :cell-style="rowStyle"
-                stripe row-key="id"
+                stripe row-key="stationId"
                 default-expand-all>
-        <el-table-column prop="id" label="序号" width="80" align="center"></el-table-column>
-        <el-table-column prop="number" label="换电站编号" align="center"></el-table-column>
+        <el-table-column prop="stationId" label="序号" width="80" align="center"></el-table-column>
+        <el-table-column prop="stationNumber" label="换电站编号" align="center"></el-table-column>
         <el-table-column prop="stationName" label="换电站名称" align="center"></el-table-column>
         <el-table-column prop="stationAddress" label="换电站地址" align="center"></el-table-column>
         <el-table-column prop="chargeNumber" label="可用电池数量" align="center"></el-table-column>
         <el-table-column prop="chargeTotal" label="总电池数量" align="center"></el-table-column>
+        <el-table-column prop="videoUrl" label="视频流地址" align="center"></el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template v-slot="scope">
             <el-switch
@@ -35,8 +32,8 @@
                 @change="changeStatus(scope.row)"
                 active-color="#13ce66"
                 inactive-color="#ff4949"
-                :active-value = "1"
-                :inactive-value="0">
+                :active-value = 1
+                :inactive-value = 0>
             </el-switch>
           </template>
         </el-table-column>
@@ -44,11 +41,11 @@
         <el-table-column label="操作" align="center">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
-            <el-button type="primary" @click="$router.push('/editStation?id=' + scope.row.id)">编辑</el-button>
+            <el-button type="primary" @click="$router.push('/editStation?stationNumber=' + scope.row.stationNumber)">编辑</el-button>
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定删除这行数据吗？"
-                @confirm="del(scope.row.id)"
+                @confirm="del(scope.row.stationId)"
             >
               <el-button type="danger" slot="reference">删除</el-button>
             </el-popconfirm>
@@ -76,52 +73,17 @@ import request from "@/utils/request";
 import Cookies from 'js-cookie'
 
 export default {
-  name: 'Video',
+  name: 'Station',
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
-      tableData: [{
-        id: 1,
-        number: '893472472',
-        stationName: '易电石油大学电站',
-        stationAddress: '四川省成都市新都区新都大道8号',
-        chargeNumber: 5,
-        carsNumber: 5,
-        status: 1
-      },
-        {
-          id: 1,
-          number: '893472472',
-          stationName: '易电石油大学电站',
-          stationAddress: '四川省成都市新都区新都大道8号',
-          chargeNumber: 5,
-          carsNumber: 5,
-          status: 0
-        },
-        {
-          id: 1,
-          number: '893472472',
-          stationName: '易电石油大学电站',
-          stationAddress: '四川省成都市新都区新都大道8号',
-          chargeNumber: 5,
-          carsNumber: 5,
-          status: 1
-        },
-        {
-          id: 1,
-          number: '893472472',
-          stationName: '易电石油大学电站',
-          stationAddress: '四川省成都市新都区新都大道8号',
-          chargeNumber: 5,
-          carsNumber: 5,
-          status: 1
-        },],
+      tableData: [],
       total: 0,
       params: {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        stationNo: ''
+        stationName: '',
+        stationNumber: '',
       }
     }
   },
@@ -163,10 +125,10 @@ export default {
 
     /**
      * 删除当前行
-     * @param id
+     * @param stationId
      */
-    del(id) {
-      request.delete("/station/delete/" + id).then(res => {
+    del(stationId) {
+      request.delete("/station/delete/" + stationId).then(res => {
         if (res.code === '200') {
           this.$notify.success('删除成功')
           this.load()

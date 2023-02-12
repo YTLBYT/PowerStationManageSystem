@@ -19,10 +19,10 @@
       </div>
       <el-table :data="tableData"
                 :cell-style="rowStyle"
-                stripe row-key="id"
+                stripe row-key="videoId"
                 default-expand-all>
-        <el-table-column prop="id" label="编号" width="80" align="center"></el-table-column>
-        <el-table-column prop="videoAddress" label="视频流地址" align="center"></el-table-column>
+        <el-table-column prop="videoId" label="编号" width="80" align="center"></el-table-column>
+        <el-table-column prop="videoUrl" label="视频流地址" align="center"></el-table-column>
         <el-table-column prop="origin" label="来源" align="center"></el-table-column>
         <el-table-column prop="agreement" label="流传输协议" align="center"></el-table-column>
         <el-table-column prop="bandWidth" label="入口带宽" align="center"></el-table-column>
@@ -37,11 +37,11 @@
         <el-table-column label="操作" align="center">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
-            <el-button type="primary" @click="$router.push('/editBorrow?id=' + scope.row.id)">编辑</el-button>
+            <el-button type="primary" @click="$router.push('/editBorrow?videoId=' + scope.row.videoId)">编辑</el-button>
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定删除这行数据吗？"
-                @confirm="del(scope.row.id)"
+                @confirm="del(scope.row.videoId)"
             >
               <el-button type="danger" slot="reference">删除</el-button>
             </el-popconfirm>
@@ -74,8 +74,8 @@ export default {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
       tableData: [{
-        id: 1,
-        videoAddress: 'https://ServeIp/live/stream.m3u8',
+        videoId: 1,
+        videoUrl: 'https://ServeIp/live/stream.m3u8',
         origin: '推流',
         agreement: 'HLS',
         bandWidth: '300Mkbps',
@@ -83,8 +83,8 @@ export default {
         status: '上线'
       },
         {
-          id: 2,
-          videoAddress: 'https://ServeIp/live/stream.m3u8',
+          videoId: 2,
+          videoUrl: 'https://ServeIp/live/stream.m3u8',
           origin: '推流',
           agreement: 'RTSP',
           bandWidth: '300Mkbps',
@@ -92,8 +92,8 @@ export default {
           status: '上线'
         },
         {
-          id: 3,
-          videoAddress: 'https://ServeIp/live/stream.m3u8',
+          videoId: 3,
+          videoUrl: 'https://ServeIp/live/stream.m3u8',
           origin: '推流',
           agreement: 'HLS',
           bandWidth: '300Mkbps',
@@ -101,8 +101,8 @@ export default {
           status: '上线'
         },
         {
-          id: 4,
-          videoAddress: 'https://ServeIp/live/stream.m3u8',
+          videoId: 4,
+          videoUrl: 'https://ServeIp/live/stream.m3u8',
           origin: '推流',
           agreement: 'HLS',
           bandWidth: '300Mkbps',
@@ -146,8 +146,8 @@ export default {
       this.params.pageNum = pageNum
       this.load()
     },
-    del(id) {
-      request.delete("/borrow/delete/" + id).then(res => {
+    del(videoId) {
+      request.delete("/borrow/delete/" + videoId).then(res => {
         if (res.code === '200') {
           this.$notify.success('删除成功')
           this.load()

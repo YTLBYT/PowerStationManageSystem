@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.powerstationmanagesystem.dao.TroubleDao">
+
+    <insert id="addTrouble">
+        insert into sys_trouble(trouble_describe, station_number, station_address, status)
+        values (#{troubleDescribe}, #{stationNumber}, #{stationAddress}, 1)
+    </insert>
+    <update id="updateTrouble">
+        update sys_trouble set resolve_time=#{resolveTime}, user_name=#{userName}, telephone=#{telephone}, status=#{status} where trouble_id = #{troubleId}
+    </update>
+    <delete id="deleteTrouble">
+        delete from sys_trouble where trouble_Id = #{troubleId}
+    </delete>
+    <select id="selectTroubleList" resultType="com.example.powerstationmanagesystem.entiy.Trouble">
+        select * from sys_trouble
+        <where>
+            <if test="stationNumber != null and stationNumber != ''">
+                station_number like concat('%', #{stationNumber}, '%')
+            </if>
+            <if test="stationAddress != null and stationAddress != ''">
+                and  station_address like concat('%', #{stationAddress}, '%')
+            </if>
+            <if test="createTime != null and createTime != ''">
+                and  create_time like concat('%', #{createTime}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

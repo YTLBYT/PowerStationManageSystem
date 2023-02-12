@@ -2,7 +2,7 @@
   <el-container style="height: 100vh; border: 1px solid #eee">
 <!--    侧边栏-->
     <el-aside :width="asidewidth + 'px'" style="background-color: rgb(238, 241, 246);height:100%;">
-      <el-menu :default-openeds="openeds" style="min-height: 100%; overflow-x: hidden;"
+      <el-menu style="min-height: 100%; overflow-x: hidden;"
                :collapse-transition="false"
                :collapse="isCollapse"
                :default-active="$route.path" router

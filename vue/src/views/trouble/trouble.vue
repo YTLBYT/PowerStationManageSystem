@@ -8,40 +8,44 @@
     </div>
     <!--    搜索表单-->
     <div style="margin-bottom: 20px; margin-top: 30px">
-      <el-input style="width: 240px" placeholder="请输入图书名称" v-model="params.bookName"></el-input>
-      <el-input style="width: 240px; margin-left: 5px" placeholder="请输入图书标准码" v-model="params.bookNo"></el-input>
-      <el-input style="width: 240px; margin-left: 5px" placeholder="请输入用户名称" v-model="params.userName"></el-input>
+      <el-input style="width: 240px" placeholder="请输入换电站编号" v-model="params.stationNumber"></el-input>
+      <el-input style="width: 240px; margin-left: 5px" placeholder="请输入换电站地址" v-model="params.stationAddress"></el-input>
+      <el-input style="width: 240px; margin-left: 5px" placeholder="请输入上报日期" v-model="params.createTime"></el-input>
       <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
       <el-button style="margin-left: 5px" type="warning" @click="reset"><i class="el-icon-refresh"></i> 重置</el-button>
     </div>
 
-    <el-table :data="tableData" stripe row-key="id"  default-expand-all>
-      <el-table-column prop="id" label="故障编号" width="80"></el-table-column>
-      <el-table-column prop="stationId" label="换电站编号"></el-table-column>
+    <el-table :data="tableData" stripe row-key="troubleId"  default-expand-all>
+      <el-table-column prop="troubleId" label="故障编号" width="80"></el-table-column>
+      <el-table-column prop="stationNumber" label="换电站编号"></el-table-column>
       <el-table-column prop="troubleDescribe" label="故障描述"></el-table-column>
-      <el-table-column prop="stationName" label="换电站名称"></el-table-column>
+      <el-table-column prop="stationAddress" label="换电站地址"></el-table-column>
       <el-table-column prop="createTime" label="上报日期"></el-table-column>
-      <el-table-column prop="resolveDate" label="处理日期"></el-table-column>
-      <el-table-column prop="note" label="故障状态">
+      <el-table-column prop="resolveTime" label="处理日期"></el-table-column>
+      <el-table-column prop="userName" label="处理人姓名"></el-table-column>
+      <el-table-column prop="telephone" label="处理人手机号"></el-table-column>
+      <el-table-column prop="status" label="故障提示">
         <template v-slot="scope">
-          <el-tag type="success" v-if="scope.row.note === '已处理'">{{ scope.row.note }}</el-tag>
-          <el-tag type="danger" v-if="scope.row.note === '未处理'">{{ scope.row.note }}</el-tag>
+          <el-tag type="success" v-if="scope.row.status === -1">已处理</el-tag>
+          <el-tag type="warning" v-if="scope.row.status === 0">正在处理</el-tag>
+          <el-tag type="danger" v-if="scope.row.status === 1">未处理</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="管理">
         <template v-slot="scope">
-          <el-button type="primary" @click="returnBooks(scope.row)" v-if="scope.row.note === '未处理'">排除</el-button>
+          <el-button type="primary" @click="resolve(scope.row)" v-if="scope.row.status === 1">处理</el-button>
+          <el-button type="success" @click="resolve(scope.row)" v-if="scope.row.status === 0">处理完成</el-button>
         </template>
       </el-table-column>
       <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
       <el-table-column label="操作">
         <template v-slot="scope">
           <!--          scope.row 就是当前行数据-->
-          <!--          <el-button type="primary" @click="$router.push('/editBorrow?id=' + scope.row.id)">编辑</el-button>-->
+          <!--          <el-button type="primary" @click="$router.push('/editBorrow?troubleId=' + scope.row.troubleId)">编辑</el-button>-->
           <el-popconfirm
               style="margin-left: 5px"
               title="您确定删除这行数据吗？"
-              @confirm="del(scope.row.id)"
+              @confirm="del(scope.row.troubleId)"
           >
             <el-button type="danger" slot="reference">删除</el-button>
           </el-popconfirm>
@@ -73,29 +77,14 @@ export default {
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
-      tableData: [{
-        id: 1,
-        stationId: 734672,
-        troubleDescribe: '线路故障',
-        stationName: '易电石油大学站',
-        createTime: '2023-2-8',
-        resolveDate: '2023-2-9',
-        note: '已处理'
-      },
-        {
-          id: 2,
-          stationId: 734672,
-          troubleDescribe: '停电',
-          stationName: '易电石油大学站',
-          createTime: '2023-2-8',
-          note: '未处理'
-        }],
+      tableData: [],
       total: 0,
       params: {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        bookNo: ''
+        stationNumber: '',
+        stationAddress: '',
+        createTime:''
       }
     }
   },
@@ -128,8 +117,8 @@ export default {
       this.params.pageNum = pageNum
       this.load()
     },
-    del(id) {
-      request.delete("/trouble/delete/" + id).then(res => {
+    del(troubleId) {
+      request.delete("/trouble/delete/" + troubleId).then(res => {
         if (res.code === '200') {
           this.$notify.success('删除成功')
           this.load()
@@ -138,10 +127,18 @@ export default {
         }
       })
     },
-    returnBooks(row) {
-      request.post("/trouble/saveRetur", row).then(res => {
+    resolve(row) {
+      row.userName = this.admin.userName
+      row.telephone = this.admin.telephone
+      if (row.status === 1){
+        row.status = 0
+      }
+      else if (row.status === 0){
+        row.status = -1
+      }
+      request.put("/trouble/update", row).then(res => {
         if (res.code === '200') {
-          this.$notify.success('还书成功')
+          this.$notify.success('更新故障状态成功')
           this.load()
         } else {
           this.$notify.error(res.msg)

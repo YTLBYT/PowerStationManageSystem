@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.powerstationmanagesystem.dao.StationDao">
+
+    <insert id="addStation">
+        insert into sys_station(station_number, station_name, station_address, charge_number, charge_total)
+        values (#{stationNumber}, #{stationName}, #{stationAddress}, #{chargeNumber}, #{chargeTotal})
+    </insert>
+    <insert id="addStationToCars">
+        insert into sys_station_car(station_id, car_id)
+        values (#{stationId}, #{carId})
+    </insert>
+    <update id="updateStation">
+        update sys_station set station_name=#{stationName}, station_address=#{stationAddress},
+                               charge_total=#{chargeTotal}, charge_number=#{chargeNumber},
+                               status = #{status} where station_id = #{stationId}
+    </update>
+    <delete id="deleteStation">
+        delete from sys_station where station_id = #{stationId}
+    </delete>
+    <delete id="deleteStationToCars">
+        delete from sys_station_car where station_id = #{stationId}
+    </delete>
+    <select id="getCars" resultType="com.example.powerstationmanagesystem.entiy.Car">
+        select * from sys_car
+    </select>
+    <select id="selectStationByNumber" resultType="com.example.powerstationmanagesystem.entiy.Station">
+        select * from sys_station where station_number = #{stationNumber}
+    </select>
+    <select id="selectPageStation" resultType="com.example.powerstationmanagesystem.entiy.Station">
+        select * from sys_station
+        <where>
+            <if test="stationName != null and stationName != ''">
+                station_name like concat('%', #{stationName}, '%')
+            </if>
+            <if test="stationNumber != null and stationNumber != ''">
+                and  station_number like concat('%', #{stationNumber}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

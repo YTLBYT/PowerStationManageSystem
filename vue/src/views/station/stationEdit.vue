@@ -10,7 +10,7 @@
     <div style="margin-top: 30px">
       <el-form :inline="true" :model="form" label-width="100px">
         <el-form-item label="换电站编号">
-          <el-input v-model="form.number" disabled></el-input>
+          <el-input v-model="form.stationNumber" disabled></el-input>
         </el-form-item>
         <el-form-item label="换电站名称">
           <el-input v-model="form.stationName" placeholder="请输入换电站名称"></el-input>
@@ -23,6 +23,9 @@
         </el-form-item>
         <el-form-item label="总电池数量">
           <el-input v-model="form.chargeTotal" placeholder="请输入总电池数量"></el-input>
+        </el-form-item>
+        <el-form-item label="视频流地址">
+          <el-input v-model="form.videoUrl" placeholder="请输入视频流地址"></el-input>
         </el-form-item>
       </el-form>
     </div>
@@ -44,8 +47,8 @@ export default {
     }
   },
   created() {
-    const id = this.$route.query.id
-    request.get("/station/" + id).then(res => {
+    const stationNumber = this.$route.query.stationNumber
+    request.get("/station/" + stationNumber).then(res => {
       this.form = res.data
     })
   },

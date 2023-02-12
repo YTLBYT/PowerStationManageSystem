@@ -8,9 +8,15 @@
     <el-main>
       <div style="padding: 10px 0;">
         <el-input
-            placeholder="请输入内容"
+            placeholder="请输入用户名"
             suffix-icon="el-icon-search"
-            v-model="input"
+            v-model="params.userName"
+            style="width: 200px; margin-top: 0px">
+        </el-input>
+        <el-input
+            placeholder="请输入手机号"
+            suffix-icon="el-icon-search"
+            v-model="params.telephone"
             style="width: 200px; margin-top: 0px">
         </el-input>
         <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
@@ -20,13 +26,25 @@
       </div>
       <el-table :data="tableData"
                 :cell-style="rowStyle"
-                stripe row-key="id"
+                stripe row-key="userId"
                 default-expand-all>
-        <el-table-column prop="id" label="序号" width="80" align="center"></el-table-column>
+        <el-table-column prop="userId" label="序号" width="80" align="center"></el-table-column>
         <el-table-column prop="userName" label="用户名" align="center"></el-table-column>
         <el-table-column prop="telephone" label="手机号" align="center"></el-table-column>
-        <el-table-column prop="role" label="角色" align="center"></el-table-column>
-        <el-table-column prop="stationId" label="所属换电站id" align="center"></el-table-column>
+        <el-table-column label="角色" align="center">
+          <template slot-scope="scope">
+          <span v-if="scope.row.roleId === 1">
+            管理员
+          </span>
+          <span v-if="scope.row.roleId === 2">
+              换电站管理员
+          </span>
+          <span v-if="scope.row.roleId === 3">
+            用户
+          </span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="stationNumber" label="所属换电站编号" align="center"></el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template v-slot="scope">
             <el-switch
@@ -43,11 +61,12 @@
         <el-table-column label="操作" align="center">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
-            <el-button type="primary" @click="$router.push('/userEdit?id=' + scope.row.id)">编辑</el-button>
+            <el-button type="primary" @click="$router.push('/userEdit?userId=' + scope.row.userId)">编辑</el-button>
+            <el-button type="warning" @click="resetUserPassword(scope.row.userId)">重置密码</el-button>
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定删除这行数据吗？"
-                @confirm="del(scope.row.id)"
+                @confirm="del(scope.row.userId)"
             >
               <el-button type="danger" slot="reference">删除</el-button>
             </el-popconfirm>
@@ -79,35 +98,13 @@ export default {
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
-      tableData: [{
-        id: 1,
-        userName: '杨涛',
-        telephone: '15378590469',
-        role: '管理员',
-        status: 1
-      },
-        {
-          id: 2,
-          userName: '杨涛',
-          telephone: '15378590469',
-          role: '换电站管理员',
-          stationId: '448548',
-          status: 1
-        },
-        {
-          id: 3,
-          userName: '杨涛',
-          telephone: '15378590469',
-          role: '用户',
-          status: 1
-        }
-      ],
+      tableData: [],
       total: 0,
       params: {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        stationNo: ''
+        userName: '',
+        telephone: ''
       }
     }
   },
@@ -119,7 +116,7 @@ export default {
      * 默认加载全部
      */
     load() {
-      request.get('/station/page', {
+      request.get('/user/page', {
         params: this.params
       }).then(res => {
         if (res.code === '200') {
@@ -135,9 +132,6 @@ export default {
       this.params = {
         pageNum: 1,
         pageSize: 10,
-        bookName: '',
-        bookNo: '',
-        userName: ''
       }
       this.load()
     },
@@ -149,12 +143,22 @@ export default {
 
     /**
      * 删除当前行
-     * @param id
+     * @param userId
      */
-    del(id) {
-      request.delete("/station/delete/" + id).then(res => {
+    del(userId) {
+      request.delete("/user/delete/" + userId).then(res => {
         if (res.code === '200') {
           this.$notify.success('删除成功')
+          this.load()
+        } else {
+          this.$notify.error(res.msg)
+        }
+      })
+    },
+    resetUserPassword(userId){
+      request.put("/user/resetUserPassword/" + userId).then(res => {
+        if (res.code === '200') {
+          this.$notify.success('重置密码成功')
           this.load()
         } else {
           this.$notify.error(res.msg)
@@ -166,7 +170,7 @@ export default {
      * @param row
      */
     changeStatus(row){
-      request.put('/station/update', row).then(res => {
+      request.put('/user/update', row).then(res => {
         if (res.code === '200') {
           this.$notify.success('操作成功')
           this.load()
