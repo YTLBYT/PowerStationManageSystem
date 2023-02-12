@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from "@/views/Layout";
 import Login from "@/views/login/Login";
+import Cookies from "js-cookie";
 
 Vue.use(VueRouter)
 
@@ -53,11 +54,13 @@ const routes = [
                 name: 'AddStation',
                 component: () => import('@/views/station/stationAdd')
             },
+            //========故障管理========
             {
                 path:'trouble',
                 name: 'Trouble',
                 component: () => import('@/views/trouble/trouble')
             },
+            //========用户管理========
             {
                 path:'user',
                 name: 'UserList',
@@ -73,6 +76,33 @@ const routes = [
                 name: 'UserEdit',
                 component: () => import('@/views/user/userEdit')
             },
+            {
+                path: 'person',
+                name: 'Person',
+                component: () => import('@/views/user/Person')
+            },
+            //========权限管理========
+            {
+                path: 'role',
+                name: 'Role',
+                component: () => import('@/views/role/Role')
+            },
+            //========车辆管理========
+            {
+                path: 'car',
+                name: 'Car',
+                component: () => import('@/views/car/car')
+            },
+            {
+                path: 'carAdd',
+                name: 'CarAdd',
+                component: () => import('@/views/car/carAdd')
+            },
+            {
+                path: 'carEdit',
+                name: 'CarEdit',
+                component: () => import('@/views/car/carEdit')
+            }
         ]
     }
 ]
@@ -81,6 +111,14 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.path === '/login') next()
+    const admin = Cookies.get("admin")
+    if (!admin && to.path !== '/login') return next("/login")  // 强制退回到登录页面
+    // 访问 /home 的时候，并且cookie里面存在数据，这个时候我就直接放行
+    next()
 })
 
 export default router

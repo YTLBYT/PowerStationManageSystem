@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.powerstationmanagesystem.dao.CarDao">
+
+    <insert id="addCar">
+        insert into sys_car (car_brand, car_type)
+        values (#{carBrand}, #{carType})
+    </insert>
+    <update id="updateCar">
+        update sys_car set car_brand = #{carBrand}, car_type = #{carType} where car_id = #{carId}
+    </update>
+    <delete id="deleteCar">
+        delete from sys_car where car_Id = #{carId}
+    </delete>
+    <select id="selectCarList" resultType="com.example.powerstationmanagesystem.entiy.Car">
+        select * from sys_car
+        <where>
+            <if test="carBrand != null and carBrand != ''">
+                car_brand like concat('%', #{carBrand}, '%')
+            </if>
+            <if test="carType != null and carType != ''">
+                and  car_type like concat('%', #{carType}, '%')
+            </if>
+        </where>
+        order by car_brand
+    </select>
+    <select id="getCarById" resultType="com.example.powerstationmanagesystem.entiy.Car">
+        select * from sys_car where car_id = #{carId}
+    </select>
+</mapper>

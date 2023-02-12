@@ -5,6 +5,7 @@ import cn.hutool.core.util.IdUtil;
 import com.example.powerstationmanagesystem.controller.request.StationRequest;
 import com.example.powerstationmanagesystem.dao.StationDao;
 import com.example.powerstationmanagesystem.entiy.Car;
+import com.example.powerstationmanagesystem.entiy.LoginDTO;
 import com.example.powerstationmanagesystem.entiy.Station;
 import com.example.powerstationmanagesystem.service.StationService;
 import com.github.pagehelper.PageHelper;
@@ -78,6 +79,5 @@ public class StationServiceImpl implements StationService {
         stationDao.deleteStationToCars(stationId);
         return stationDao.deleteStation(stationId);
     }
-
 
 }

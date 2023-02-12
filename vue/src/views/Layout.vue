@@ -43,6 +43,10 @@
           <img src="../assets/role.png" alt="" width="18px" style="margin-left: 4px">
           <span slot="title" style="margin-left: 8px">角色管理</span>
         </el-menu-item>
+        <el-menu-item index="car">
+          <img src="../assets/car-fill.png" alt="" width="18px" style="margin-left: 4px">
+          <span slot="title" style="margin-left: 8px">车辆管理</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
 
@@ -53,10 +57,10 @@
           <span :class="collapseBtnClass" style="cursor: pointer" @click="collapse"></span>
         </div>
         <el-dropdown style="width: 70px; cursor: pointer">
-          <span>王小虎</span><i class="el-icon-arrow-down" style="margin-left: 5px"></i>
+          <span>{{admin.userName}}</span><i class="el-icon-arrow-down" style="margin-left: 5px"></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人信息</el-dropdown-item>
-            <el-dropdown-item>退出</el-dropdown-item>
+            <el-dropdown-item><div @click="$router.push('/person')">个人信息</div></el-dropdown-item>
+            <el-dropdown-item><div @click="logout">退出</div></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -71,11 +75,16 @@
 </template>
 
 
+
+
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   name: 'Layout.vue',
   data() {
     return {
+      admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
       input: '',
       collapseBtnClass: 'el-icon-s-fold',
       isCollapse: false,
@@ -95,6 +104,11 @@ export default {
     },
     rowStyle() {
       return "text-align:center";
+    },
+    logout() {
+      // 清除浏览器用户数据
+      Cookies.remove('admin')
+      this.$router.push('/login')
     }
   }
 }
