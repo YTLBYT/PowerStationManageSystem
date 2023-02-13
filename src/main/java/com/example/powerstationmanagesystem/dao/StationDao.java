@@ -13,9 +13,11 @@ public interface StationDao {
     public int addStation(Station station);
     public int addStationToCars(Integer stationId, Integer carId);
     public List<Car> getCars();
+    public List<String> getCarBrand();
     public Station selectStationByNumber(String stationNumber);
     public List<Station> selectPageStation(StationRequest stationRequest);
     public Integer updateStation(Station station);
     public Integer deleteStation(Integer stationId);
     public Integer deleteStationToCars(Integer stationId);
+    public List<Integer> getDefaultCars(Integer stationId);
 }

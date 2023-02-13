@@ -20,6 +20,8 @@ public class StationController {
         return Result.success(stationService.getCars());
     }
 
+
+
     @PostMapping("/add")
     public Result addStation(@RequestBody Station station){
         return Result.success(stationService.addStation(station));
@@ -49,5 +51,15 @@ public class StationController {
     @DeleteMapping("/delete/{stationId}")
     public Result delete(@PathVariable Integer stationId){
         return Result.success(stationService.deleteStation(stationId));
+    }
+
+    @GetMapping("carTreeList")
+    public Result carTreeList(){
+        return Result.success(stationService.getTreeCars());
+    }
+
+    @GetMapping("/car/{stationId}")
+    public Result getDefaultCars(@PathVariable Integer stationId){
+        return Result.success(stationService.getDefaultCars(stationId));
     }
 }

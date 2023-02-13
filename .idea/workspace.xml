@@ -4,43 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="基本管理搭建完成">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/CarController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/RoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/CarRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/RoleRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/CarDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/LoginDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/CarService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/CarServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/RoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Mappers/CarMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Mappers/RoleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/assets/car-fill.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/assets/car.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/car/car.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/car/carAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/car/carEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/role/Role.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/user/Person.vue" afterDir="false" />
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="登录、车辆管理、可视化完成">
+      <change afterPath="$PROJECT_DIR$/power.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/StationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/StationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/Home/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Home/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/car/carAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/car/carAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/role/Role.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/role/Role.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +90,18 @@
       <recent name="com.example.powerstationmanagesystem.common" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager" selected="Spring Boot.PowerStationManageSystemApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PowerStationManageSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PowerStationManageSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.powerstationmanagesystem.PowerStationManageSystemApplication" />
@@ -151,6 +140,8 @@
       <workItem from="1676044365099" duration="844000" />
       <workItem from="1676177819684" duration="35795000" />
       <workItem from="1676230886318" duration="11579000" />
+      <workItem from="1676242597752" duration="54000" />
+      <workItem from="1676269076941" duration="17199000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -180,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676219978460</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="登录、车辆管理、可视化完成">
+      <created>1676242640102</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676242640102</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +201,7 @@
     <MESSAGE value="1111" />
     <MESSAGE value="前端搭建完成" />
     <MESSAGE value="基本管理搭建完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="基本管理搭建完成" />
+    <MESSAGE value="登录、车辆管理、可视化完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录、车辆管理、可视化完成" />
   </component>
 </project>

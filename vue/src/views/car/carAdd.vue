@@ -9,10 +9,10 @@
     </div>
     <div style="margin-top: 30px">
       <el-form :inline="true" :model="form" :rules="rules" ref="ruleForm" label-width="150px">
-        <el-form-item label="用户名称" prop="userName">
+        <el-form-item label="汽车品牌" prop="userName">
           <el-input v-model="form.carBrand" placeholder="请输入汽车品牌"></el-input>
         </el-form-item>
-        <el-form-item label="手机号" prop="telephone">
+        <el-form-item label="汽车型号" prop="telephone">
           <el-input v-model="form.carType" placeholder="请输入汽车型号"></el-input>
         </el-form-item>
       </el-form>

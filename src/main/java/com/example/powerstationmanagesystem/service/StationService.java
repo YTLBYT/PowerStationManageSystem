@@ -14,4 +14,6 @@ public interface StationService {
     public Station selectStationByNumber(String stationNumber);
     public Integer updateStation(Station station);
     public Integer deleteStation(Integer stationId);
+    public List<Object> getTreeCars();
+    public List<Integer> getDefaultCars(Integer stationId);
 }

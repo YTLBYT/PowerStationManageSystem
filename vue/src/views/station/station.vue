@@ -6,7 +6,7 @@
       <el-breadcrumb-item>电站信息</el-breadcrumb-item>
     </el-breadcrumb>
     <el-main>
-      <div style="padding: 10px 0;">
+      <div style="padding: 10px 0;" v-show="admin.roleId === 1">
         <el-input placeholder="请输入换电站名称" suffix-icon="el-icon-search" v-model="params.stationName" style="width: 200px; margin-top: 0px"></el-input>
         <el-input placeholder="请输入换电站编号" suffix-icon="el-icon-search" v-model="params.stationNumber" style="width: 200px; margin-top: 0px"></el-input>
         <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
@@ -41,13 +41,13 @@
         <el-table-column label="操作" align="center">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
-            <el-button type="primary" @click="$router.push('/editStation?stationNumber=' + scope.row.stationNumber)">编辑</el-button>
+            <el-button type="primary" @click="$router.push('/editStation?stationNumber=' + scope.row.stationNumber + '&stationId=' + scope.row.stationId)">编辑</el-button>
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定删除这行数据吗？"
                 @confirm="del(scope.row.stationId)"
             >
-              <el-button type="danger" slot="reference">删除</el-button>
+              <el-button type="danger" slot="reference" v-show="admin.roleId === 1">删除</el-button>
             </el-popconfirm>
           </template>
         </el-table-column>
@@ -95,6 +95,9 @@ export default {
      * 默认加载全部
      */
     load() {
+      if (this.admin.roleId === 2){
+        this.params.stationNumber = this.admin.stationNumber
+      }
       request.get('/station/page', {
         params: this.params
       }).then(res => {

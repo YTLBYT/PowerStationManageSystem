@@ -19,14 +19,11 @@
           <el-input v-model="form.chargeTotal" placeholder="请输入总电池数量"></el-input>
         </el-form-item>
         <el-form-item label="支持的汽车" prop="carIdList">
-          <el-select v-model="form.carIdList" multiple placeholder="请选择支持的汽车">
-            <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.carBrand + item.carType"
-                :value="item.carId">
-            </el-option>
-          </el-select>
+          <el-cascader
+              :options="options"
+              :props="{ multiple: true }"
+              v-model="carIds"
+              clearable></el-cascader>
         </el-form-item>
       </el-form>
     </div>
@@ -46,6 +43,7 @@ export default {
   data() {
     return {
       options: [],
+      carIds:[],
       form: {},
       rules: {
         stationName: [
@@ -63,6 +61,10 @@ export default {
   },
   methods: {
     save() {
+      this.form.carIdList = []
+      for (let i = 0; i < this.carIds.length; i++){
+        this.form.carIdList.push(this.carIds[i][1])
+      }
       this.$refs['ruleForm'].validate((valid) => {
         if (valid) {
           request.post('/station/add', this.form).then(res => {
@@ -77,7 +79,7 @@ export default {
       })
     },
     load(){
-      request.get('station/getCarList').then(res =>{
+      request.get('station/carTreeList').then(res =>{
         if (res.code === '200') {
           this.options = res.data
         }

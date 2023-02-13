@@ -40,4 +40,11 @@
             </if>
         </where>
     </select>
+    <select id="getCarBrand" resultType="java.lang.String">
+        select DISTINCT car_brand from sys_car
+    </select>
+    <select id="getDefaultCars" resultType="java.lang.Integer">
+        select car_id
+        from sys_station_car where station_id = #{stationId};
+    </select>
 </mapper>

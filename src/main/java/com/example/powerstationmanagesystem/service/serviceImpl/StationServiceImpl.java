@@ -70,6 +70,18 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public Integer updateStation(Station station) {
+        stationDao.deleteStationToCars(station.getStationId());
+        //利用sqlbatch增快批量插入速度
+        SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);//跟上述sql区别
+        StationDao mapper = sqlSession.getMapper(StationDao.class);
+        List<Integer> carIdList = station.getCarIdList();
+        for (Integer carId:carIdList) {
+            mapper.addStationToCars(station.getStationId(), carId);
+        }
+        //提交事务
+        sqlSession.commit();
+        //清楚缓存
+        sqlSession.clearCache();
         return stationDao.updateStation(station);
     }
 
@@ -80,4 +92,32 @@ public class StationServiceImpl implements StationService {
         return stationDao.deleteStation(stationId);
     }
 
+    @Override
+    public List<Object> getTreeCars() {
+        List<Object> carTreeList = new ArrayList<>();
+        List<Car> cars = stationDao.getCars();
+        List<String> carBrands = stationDao.getCarBrand();
+        for(String carBrand: carBrands){
+            HashMap<String, Object> treeMap = new HashMap<>();
+            treeMap.put("value", 0);
+            treeMap.put("label", carBrand);
+            List<Object> typeList = new ArrayList<>();
+            for (Car car: cars){
+                if (car.getCarBrand().equals(carBrand)){
+                    HashMap<String, Object> treeMap1 = new HashMap<>();
+                    treeMap1.put("value", car.getCarId());
+                    treeMap1.put("label", car.getCarType());
+                    typeList.add(treeMap1);
+                }
+            }
+            treeMap.put("children", typeList);
+            carTreeList.add(treeMap);
+        }
+        return carTreeList;
+    }
+
+    @Override
+    public List<Integer> getDefaultCars(Integer stationId) {
+        return stationDao.getDefaultCars(stationId);
+    }
 }
