@@ -45,5 +45,10 @@ public class Video{
      */
     private Integer status;
 
+    /**
+     * 对应换电站编号
+     */
+    private String stationNumber;
+
     public  Video() {}
 }

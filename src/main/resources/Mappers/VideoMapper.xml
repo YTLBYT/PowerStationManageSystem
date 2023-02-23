@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.powerstationmanagesystem.dao.VideoDao">
+
+    <insert id="addVideo">
+        insert into sys_video (video_url, origin, agreement, band_width, station_number)
+        values (#{videoUrl}, #{origin}, #{agreement}, #{bandWidth}, #{stationNumber})
+    </insert>
+    <update id="updateVideo">
+        update sys_video set video_url = #{videoUrl}, origin = #{origin}, agreement = #{agreement},
+                             band_width = #{bandWidth}
+        where video_id = #{videoId}
+    </update>
+    <update id="online">
+        update sys_video set status = 1 where video_id = #{videoId};
+    </update>
+    <update id="offline">
+        update sys_video set status = 0
+    </update>
+    <delete id="deleteVideo">
+        delete from sys_video where video_Id = #{videoId}
+    </delete>
+    <select id="selectVideoList" resultType="com.example.powerstationmanagesystem.entiy.Video">
+        select * from sys_video
+        <where>
+            <if test="videoUrl != null and videoUrl != ''">
+                video_url like concat('%', #{videoUrl}, '%')
+            </if>
+            <if test="stationNumber != null and stationNumber != ''">
+                and  station_number like concat('%', #{stationNumber}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getVideoById" resultType="com.example.powerstationmanagesystem.entiy.Video">
+        select * from sys_video where video_id = #{videoId}
+    </select>
+
+</mapper>

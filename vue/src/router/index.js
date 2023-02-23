@@ -33,6 +33,16 @@ const routes = [
                 name: 'Video',
                 component: () => import('@/views/video/video')
             },
+            {
+                path: 'videoAdd',
+                name: 'AddVideo',
+                component: () => import('@/views/video/videoAdd')
+            },
+            {
+                path: 'editVideo',
+                name: 'editVideo',
+                component: () => import('@/views/video/videoEdit')
+            },
             //========电站管理========
             {
                 path: 'info',

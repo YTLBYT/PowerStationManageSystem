@@ -7,7 +7,7 @@
       </el-breadcrumb>
     </div>
     <!--    搜索表单-->
-    <div style="margin-bottom: 20px; margin-top: 30px">
+    <div style="margin-bottom: 20px; margin-top: 30px" v-if="admin.roleId === 1">
       <el-input style="width: 240px" placeholder="请输入换电站编号" v-model="params.stationNumber"></el-input>
       <el-input style="width: 240px; margin-left: 5px" placeholder="请输入换电站地址" v-model="params.stationAddress"></el-input>
       <el-input style="width: 240px; margin-left: 5px" placeholder="请输入上报日期" v-model="params.createTime"></el-input>
@@ -93,6 +93,9 @@ export default {
   },
   methods: {
     load() {
+      if (this.admin.roleId === 2){
+        this.params.stationNumber = this.admin.stationNumber
+      }
       request.get('/trouble/page', {
         params: this.params
       }).then(res => {

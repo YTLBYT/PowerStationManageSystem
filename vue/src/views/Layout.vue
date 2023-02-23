@@ -1,6 +1,6 @@
 <template>
   <el-container style="height: 100vh; border: 1px solid #eee">
-<!--    侧边栏-->
+    <!--    侧边栏-->
     <el-aside :width="asidewidth + 'px'" style="background-color: rgb(238, 241, 246);height:100%;">
       <el-menu style="min-height: 100%; overflow-x: hidden;"
                :collapse-transition="false"
@@ -15,7 +15,7 @@
           <i class="el-icon-house"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="video">
+        <el-menu-item index="video" v-if="admin.roleId === 2">
           <i class="el-icon-s-platform"></i>
           <span slot="title">视频管理</span>
         </el-menu-item>
@@ -27,7 +27,7 @@
           <el-menu-item index="/info">
             <span slot="title">电站信息</span>
           </el-menu-item>
-          <el-menu-item index="/troubleAdd">
+          <el-menu-item index="/troubleAdd" v-if="admin.roleId === 2">
             <span slot="title">故障上报</span>
           </el-menu-item>
         </el-submenu>
@@ -35,15 +35,15 @@
           <i class="el-icon-s-release"></i>
           <span slot="title">故障管理</span>
         </el-menu-item>
-        <el-menu-item index="user">
+        <el-menu-item index="user" v-if="admin.roleId === 1">
           <i class="el-icon-user"></i>
           <span slot="title">用户管理</span>
         </el-menu-item>
-        <el-menu-item index="role">
+        <el-menu-item index="role" v-if="admin.roleId === 1">
           <img src="../assets/role.png" alt="" width="18px" style="margin-left: 4px">
           <span slot="title" style="margin-left: 8px">角色管理</span>
         </el-menu-item>
-        <el-menu-item index="car">
+        <el-menu-item index="car" v-if="admin.roleId === 1">
           <img src="../assets/car-fill.png" alt="" width="18px" style="margin-left: 4px">
           <span slot="title" style="margin-left: 8px">车辆管理</span>
         </el-menu-item>
@@ -51,7 +51,7 @@
     </el-aside>
 
     <el-container>
-<!--      头部-->
+      <!--      头部-->
       <el-header style="font-size: 12px; border-bottom: 1px solid #ccc; line-height: 80px; display: flex; height: 80px">
         <div style="flex: 1; font-size: 25px">
           <span :class="collapseBtnClass" style="cursor: pointer" @click="collapse"></span>
@@ -65,7 +65,7 @@
         </el-dropdown>
       </el-header>
 
-<!--      主体-->
+      <!--      主体-->
       <el-main tyle="flex: 1; width: 0; background-color: white; padding: 10px">
         <router-view/>
       </el-main>

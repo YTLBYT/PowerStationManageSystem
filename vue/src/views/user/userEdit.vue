@@ -10,7 +10,7 @@
     <div style="margin-top: 30px">
       <el-form :inline="true" :model="form" label-width="150px">
         <el-form-item label="用户名">
-          <el-input v-model="form.userName" :disabled="true"></el-input>
+          <el-input v-model="form.userName"></el-input>
         </el-form-item>
         <el-form-item label="手机号">
           <el-input v-model="form.telephone"></el-input>

@@ -42,6 +42,7 @@
 <script>
 import request from "@/utils/request";
 import Cookies from "js-cookie";
+import station from "@/views/station/station";
 
 export default {
   name: 'AddTrouble',
@@ -49,6 +50,7 @@ export default {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
       form: {},
+      stationNumber: '',
       stations:[],
       rules: {
         stationNumber: [
@@ -61,9 +63,17 @@ export default {
     }
   },
   created() {
-    request.get('/station/page').then(res => {
-      this.stations = res.data.list
-    })
+    if (this.admin.roleId === 2){
+      this.stationNumber = this.admin.stationNumber
+      request.get('/station/' + this.stationNumber).then(res => {
+        this.stations.push(res.data)
+      })
+    }
+    else {
+      request.get('/station/page').then(res => {
+        this.stations = res.data.list
+      })
+    }
   },
   methods: {
     save() {

@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="登录、车辆管理、可视化完成">
-      <change afterPath="$PROJECT_DIR$/power.sql" afterDir="false" />
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="完成电站对多种车辆的级联选择">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/VideoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/VideoRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/VideoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/src/views/video/videoAdd.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/src/views/video/videoEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/StationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/StationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/car/carAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/car/carAdd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/role/Role.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/role/Role.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationAdd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Video.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Layout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/trouble/trouble.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/trouble/trouble.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/user/userEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/user/userEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/video/video.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/video/video.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +143,10 @@
       <workItem from="1676177819684" duration="35795000" />
       <workItem from="1676230886318" duration="11579000" />
       <workItem from="1676242597752" duration="54000" />
-      <workItem from="1676269076941" duration="17199000" />
+      <workItem from="1676269076941" duration="17947000" />
+      <workItem from="1677025491508" duration="70000" />
+      <workItem from="1677028382920" duration="1252000" />
+      <workItem from="1677152169076" duration="7538000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -178,11 +183,28 @@
       <option name="project" value="LOCAL" />
       <updated>1676242640102</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成电站对多种车辆的级联选择">
+      <created>1676291761966</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676291761966</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -202,6 +224,7 @@
     <MESSAGE value="前端搭建完成" />
     <MESSAGE value="基本管理搭建完成" />
     <MESSAGE value="登录、车辆管理、可视化完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录、车辆管理、可视化完成" />
+    <MESSAGE value="完成电站对多种车辆的级联选择" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成电站对多种车辆的级联选择" />
   </component>
 </project>

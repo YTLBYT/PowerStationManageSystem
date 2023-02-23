@@ -7,9 +7,9 @@
     <el-main>
       <div style="padding: 10px 0;">
         <el-input
-            placeholder="请输入内容"
+            placeholder="请输入视频流地址"
             suffix-icon="el-icon-search"
-            v-model="input"
+            v-model="params.videoUrl"
             style="width: 200px; margin-top: 0px">
         </el-input>
         <el-button style="margin-left: 5px" type="primary" @click="load"><i class="el-icon-search"></i> 搜索</el-button>
@@ -29,15 +29,16 @@
         <el-table-column prop="carsNumber" label="实时排队车辆结果" align="center"></el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template v-slot="scope">
-            <el-tag type="success" v-if="scope.row.status === '上线'">{{ scope.row.status }}</el-tag>
-            <el-tag type="danger" v-if="scope.row.status === '下线'">{{ scope.row.status }}</el-tag>
+            <el-tag type="success" v-if="scope.row.status === 1">上线</el-tag>
+            <el-tag type="danger" v-if="scope.row.status === 0">下线</el-tag>
           </template>
         </el-table-column>
         <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
         <el-table-column label="操作" align="center">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
-            <el-button type="primary" @click="$router.push('/editBorrow?videoId=' + scope.row.videoId)">编辑</el-button>
+            <el-button type="primary" @click="$router.push('/editVideo?videoId=' + scope.row.videoId)">编辑</el-button>
+            <el-button type="success" @click="online(scope.row.videoId)" v-if="scope.row.status === 0">部署</el-button>
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定删除这行数据吗？"
@@ -73,47 +74,13 @@ export default {
   data() {
     return {
       admin: Cookies.get('admin') ? JSON.parse(Cookies.get('admin')) : {},
-      tableData: [{
-        videoId: 1,
-        videoUrl: 'https://ServeIp/live/stream.m3u8',
-        origin: '推流',
-        agreement: 'HLS',
-        bandWidth: '300Mkbps',
-        carsNumber: 5,
-        status: '上线'
-      },
-        {
-          videoId: 2,
-          videoUrl: 'https://ServeIp/live/stream.m3u8',
-          origin: '推流',
-          agreement: 'RTSP',
-          bandWidth: '300Mkbps',
-          carsNumber: 2,
-          status: '上线'
-        },
-        {
-          videoId: 3,
-          videoUrl: 'https://ServeIp/live/stream.m3u8',
-          origin: '推流',
-          agreement: 'HLS',
-          bandWidth: '300Mkbps',
-          carsNumber: 3,
-          status: '上线'
-        },
-        {
-          videoId: 4,
-          videoUrl: 'https://ServeIp/live/stream.m3u8',
-          origin: '推流',
-          agreement: 'HLS',
-          bandWidth: '300Mkbps',
-          status: '下线'
-        }],
+      tableData: [],
       total: 0,
       params: {
         pageNum: 1,
         pageSize: 10,
-        name: '',
-        bookNo: ''
+        videoUrl: '',
+        stationNumber: '',
       }
     }
   },
@@ -122,7 +89,8 @@ export default {
   },
   methods: {
     load() {
-      request.get('/borrow/page', {
+      this.params.stationNumber = this.admin.stationNumber
+      request.get('/video/page', {
         params: this.params
       }).then(res => {
         if (res.code === '200') {
@@ -135,9 +103,8 @@ export default {
       this.params = {
         pageNum: 1,
         pageSize: 10,
-        bookName: '',
-        bookNo: '',
-        userName: ''
+        videoUrl: '',
+        stationNumber: this.admin.stationNumber
       }
       this.load()
     },
@@ -147,7 +114,7 @@ export default {
       this.load()
     },
     del(videoId) {
-      request.delete("/borrow/delete/" + videoId).then(res => {
+      request.delete("/video/delete/" + videoId).then(res => {
         if (res.code === '200') {
           this.$notify.success('删除成功')
           this.load()
@@ -156,8 +123,18 @@ export default {
         }
       })
     },
+    online(videoId){
+      request.put("/video/online/" + videoId).then(res => {
+        if (res.code === '200') {
+          this.$notify.success('上线成功')
+          this.load()
+        } else {
+          this.$notify.error(res.msg)
+        }
+      })
+    },
     handleAdd(){
-
+      this.$router.push("/videoAdd");
     },
     rowStyle() {
       return "text-align:center";
