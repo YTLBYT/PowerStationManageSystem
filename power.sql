@@ -11,7 +11,7 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 13/02/2023 20:24:26
+ Date: 23/02/2023 21:45:30
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `sys_car`  (
   `car_brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '汽车品牌',
   `car_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '汽车型号',
   PRIMARY KEY (`car_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_car
@@ -59,7 +59,7 @@ CREATE TABLE `sys_menu`  (
   `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '页面路径',
   `sort_num` int NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -136,19 +136,18 @@ CREATE TABLE `sys_station`  (
   `station_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '换电站地址',
   `charge_number` int NULL DEFAULT NULL COMMENT '可用电池数量',
   `charge_total` int NULL DEFAULT NULL COMMENT '总电池数量',
-  `video_id` int NULL DEFAULT NULL COMMENT '视频流id',
   `status` int NULL DEFAULT 1 COMMENT '换电站状态',
   PRIMARY KEY (`station_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_station
 -- ----------------------------
-INSERT INTO `sys_station` VALUES (7, '202302121067027385', '易电1站', '四川省广安市', 3, 4, NULL, 1);
-INSERT INTO `sys_station` VALUES (8, '202302121556644922', '石油站', '西南石油大学', 15, 15, NULL, 1);
-INSERT INTO `sys_station` VALUES (11, '202302131646596637', '星球大站', '银河', 100, 100, NULL, 1);
-INSERT INTO `sys_station` VALUES (12, '202302131136002217', '比亚迪', '比亚迪厂区', 15, 15, NULL, 1);
-INSERT INTO `sys_station` VALUES (13, '202302131604168043', '特斯拉', '特斯拉厂区', 15, 15, NULL, 1);
+INSERT INTO `sys_station` VALUES (7, '202302121067027385', '易电1站', '四川省广安市', 3, 4, 1);
+INSERT INTO `sys_station` VALUES (8, '202302121556644922', '石油站', '西南石油大学', 15, 15, 1);
+INSERT INTO `sys_station` VALUES (11, '202302131646596637', '星球大站', '银河', 100, 100, 1);
+INSERT INTO `sys_station` VALUES (12, '202302131136002217', '比亚迪', '比亚迪厂区', 15, 15, 1);
+INSERT INTO `sys_station` VALUES (13, '202302131604168043', '特斯拉', '特斯拉厂区', 15, 15, 1);
 
 -- ----------------------------
 -- Table structure for sys_station_car
@@ -159,7 +158,7 @@ CREATE TABLE `sys_station_car`  (
   `station_id` int NULL DEFAULT NULL COMMENT '换电站id',
   `car_id` int NULL DEFAULT NULL COMMENT '汽车id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_station_car
@@ -217,14 +216,16 @@ CREATE TABLE `sys_trouble`  (
   `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '处理人姓名',
   `telephone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '处理人手机号',
   PRIMARY KEY (`trouble_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_trouble
 -- ----------------------------
 INSERT INTO `sys_trouble` VALUES (1, '机械臂故障', '202302121067027385', -1, '2023-02-12 21:23:42', '2023-02-13 05:08:06', '四川省广安市', '杨涛', '15378590469');
 INSERT INTO `sys_trouble` VALUES (2, '电路故障', '202302121556644922', -1, '2023-02-12 23:54:52', '2023-02-13 00:15:02', '西南石油大学', NULL, NULL);
-INSERT INTO `sys_trouble` VALUES (3, '1223456', '202302121556644922', 0, '2023-02-13 05:07:45', '2023-02-13 05:08:12', '西南石油大学', '杨涛', '15378590469');
+INSERT INTO `sys_trouble` VALUES (3, '1223456', '202302121556644922', -1, '2023-02-13 05:07:45', '2023-02-13 20:52:57', '西南石油大学', '蛇皮', '15378594689');
+INSERT INTO `sys_trouble` VALUES (4, '电站故障', '202302131604168043', 1, '2023-02-23 21:39:52', NULL, '特斯拉厂区', NULL, NULL);
+INSERT INTO `sys_trouble` VALUES (5, '电站故障', '202302131646596637', 0, '2023-02-23 21:41:48', '2023-02-23 21:42:02', '银河', '曾德力', '15378590142');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -239,13 +240,14 @@ CREATE TABLE `sys_user`  (
   `station_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '所属换电站编号',
   `status` int NULL DEFAULT 1 COMMENT '状态',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES (1, '杨涛', '123456', '15378590469', 1, NULL, 1);
 INSERT INTO `sys_user` VALUES (31, '蛇皮', '123456', '15378594689', 2, '202302131604168043', 1);
+INSERT INTO `sys_user` VALUES (32, '曾德力', '123456', '15378590142', 2, '202302131646596637', 1);
 
 -- ----------------------------
 -- Table structure for sys_user_car
@@ -271,12 +273,16 @@ CREATE TABLE `sys_video`  (
   `agreement` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '流传输协议',
   `band_width` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '入口带宽',
   `car_number` int NULL DEFAULT NULL COMMENT '实时排队车辆结果',
-  `status` int NULL DEFAULT NULL COMMENT '状态',
+  `status` int NULL DEFAULT 0 COMMENT '状态',
+  `station_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '所属换电站编号',
   PRIMARY KEY (`video_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_video
 -- ----------------------------
+INSERT INTO `sys_video` VALUES (1, 'https://serveip/live/stream/.m3u8', '推流', 'RTMP', '300Mkbps', NULL, 0, '202302131604168043');
+INSERT INTO `sys_video` VALUES (3, 'https://128.03.12/live/stream/.m3u8', '推流', 'RTMP', '300Mkdps', NULL, 0, '202302131604168043');
+INSERT INTO `sys_video` VALUES (4, 'https://128.03.12/live/stream/.m3u8', '推流', 'RTSP', '500Mkbps', NULL, 1, '202302131646596637');
 
 SET FOREIGN_KEY_CHECKS = 1;
