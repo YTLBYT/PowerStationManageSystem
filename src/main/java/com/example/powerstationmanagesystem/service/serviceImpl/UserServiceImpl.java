@@ -28,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int addUser(User user) {
+        if (userDao.getUserByTelephone(user.getTelephone()) != null){
+            throw new ServiceException("该手机号账号已经存在");
+        }
         return userDao.addUser(user);
     }
 
@@ -40,6 +43,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int updateUser(User user) {
+        User userByTelephone = userDao.getUserByTelephone(user.getTelephone());
+        if ( userByTelephone != null && !userByTelephone.getUserId().equals(user.getUserId())){
+            throw new ServiceException("该手机号账号已经存在");
+        }
         return userDao.updateUser(user);
     }
 
@@ -73,6 +80,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer personUpdate(PasswordRequest passwordRequest) {
+        User userByTelephone = userDao.getUserByTelephone(passwordRequest.getTelephone());
+        if ( userByTelephone != null && !userByTelephone.getUserId().equals(passwordRequest.getUserId())){
+            throw new ServiceException("该手机号账号已经存在");
+        }
         Integer integer = userDao.personUpdate(passwordRequest);
         if (integer == 0){
             throw new ServiceException("密码错误");
@@ -80,5 +91,10 @@ public class UserServiceImpl implements UserService {
         else {
             return integer;
         }
+    }
+
+    @Override
+    public User getUserByTelephone(String telephone) {
+        return userDao.getUserByTelephone(telephone);
     }
 }

@@ -16,6 +16,7 @@ public interface UserDao {
     public int updateUser(User user);
     public int deleteUser(Integer userId);
     public User getUserById(Integer userId);
+    public User getUserByTelephone(String telephone);
     public Integer resetUserPassword(Integer Userid);
     public LoginDTO login(LoginRequest loginRequest);
     public Integer personUpdate(PasswordRequest passwordRequest);

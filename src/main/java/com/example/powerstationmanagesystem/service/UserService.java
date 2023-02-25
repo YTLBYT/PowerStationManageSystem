@@ -18,4 +18,5 @@ public interface UserService {
     public Integer resetUserPassword(Integer userId);
     public LoginDTO login(LoginRequest loginRequest);
     public Integer personUpdate(PasswordRequest passwordRequest);
+    public User getUserByTelephone(String telephone);
 }

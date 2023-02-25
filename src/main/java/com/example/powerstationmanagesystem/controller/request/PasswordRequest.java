@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class PasswordRequest {
+    private Integer userId;
     private String userName;
     private String telephone;
     private String password;

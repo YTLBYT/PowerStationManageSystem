@@ -7,23 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="上传数据库文件">
-      <change afterPath="$PROJECT_DIR$/web端接口.docx" afterDir="false" />
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="修复一些bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/common/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/user/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/user/user.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/video/video.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/video/video.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,17 +89,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.PowerStationManageSystemApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PowerStationManageSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PowerStationManageSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.powerstationmanagesystem.PowerStationManageSystemApplication" />
@@ -158,7 +137,8 @@
       <workItem from="1677230073580" duration="492000" />
       <workItem from="1677231319646" duration="11000" />
       <workItem from="1677285541151" duration="702000" />
-      <workItem from="1677286265642" duration="6065000" />
+      <workItem from="1677286265642" duration="6279000" />
+      <workItem from="1677306063507" duration="1309000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -216,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677159945980</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修复一些bug">
+      <created>1677292725104</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677292725104</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +239,7 @@
     <MESSAGE value="登录、车辆管理、可视化完成" />
     <MESSAGE value="完成电站对多种车辆的级联选择" />
     <MESSAGE value="完成视频管理，静态实现权限分配" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成视频管理，静态实现权限分配" />
+    <MESSAGE value="修复一些bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复一些bug" />
   </component>
 </project>
