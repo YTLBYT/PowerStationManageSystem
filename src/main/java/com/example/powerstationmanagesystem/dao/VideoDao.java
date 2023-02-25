@@ -14,6 +14,7 @@ public interface VideoDao {
     public int deleteVideo(Integer videoId);
     public Video getVideoById(Integer videoId);
     public int online(Integer videoId);
-    public int offline();
+    public int offline(String stationNumber);
+    public String getVideoUrlByStationNumber(String stationNumber);
 }
 

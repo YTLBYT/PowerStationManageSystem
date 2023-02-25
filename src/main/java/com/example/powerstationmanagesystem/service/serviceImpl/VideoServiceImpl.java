@@ -47,8 +47,9 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public int online(Integer videoId) {
+        Video video = videoDao.getVideoById(videoId);
         //先将所有下线
-        videoDao.offline();
+        videoDao.offline(video.getStationNumber());
         //再将该视频设为上线
         return videoDao.online(videoId);
     }

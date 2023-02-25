@@ -24,9 +24,6 @@
         <el-form-item label="总电池数量">
           <el-input v-model="form.chargeTotal" placeholder="请输入总电池数量"></el-input>
         </el-form-item>
-        <el-form-item label="视频流地址">
-          <el-input v-model="form.videoUrl" placeholder="请输入视频流地址"></el-input>
-        </el-form-item>
         <el-form-item label="支持的汽车">
           <div class="block">
             <el-cascader
@@ -79,7 +76,7 @@ export default {
   methods: {
     save() {
       this.form.carIdList = []
-      for (let i = 0; i < this.defaultCars.length - 1; i++){
+      for (let i = 0; i < this.defaultCars.length; i++){
         this.form.carIdList.push(this.defaultCars[i][1])
       }
       request.put('/station/update', this.form).then(res => {

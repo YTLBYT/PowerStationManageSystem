@@ -48,6 +48,11 @@ public class StationController {
         return Result.success(stationService.updateStation(station));
     }
 
+    @PutMapping("/updateStatus")
+    public Result updateStatus(@RequestBody Station station){
+        return Result.success(stationService.updateStatus(station));
+    }
+
     @DeleteMapping("/delete/{stationId}")
     public Result delete(@PathVariable Integer stationId){
         return Result.success(stationService.deleteStation(stationId));

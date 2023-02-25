@@ -22,11 +22,15 @@
                 stripe row-key="videoId"
                 default-expand-all>
         <el-table-column prop="videoId" label="编号" width="80" align="center"></el-table-column>
-        <el-table-column prop="videoUrl" label="视频流地址" align="center"></el-table-column>
+        <el-table-column prop="videoUrl" label="视频流地址" align="center" width="300px"></el-table-column>
         <el-table-column prop="origin" label="来源" align="center"></el-table-column>
         <el-table-column prop="agreement" label="流传输协议" align="center"></el-table-column>
         <el-table-column prop="bandWidth" label="入口带宽" align="center"></el-table-column>
-        <el-table-column prop="carsNumber" label="实时排队车辆结果" align="center"></el-table-column>
+        <el-table-column prop="carNumber" label="实时排队车辆结果" align="center">
+          <template v-slot="scope">
+            <span v-if="scope.row.status === 1">{{scope.row.carNumber}}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template v-slot="scope">
             <el-tag type="success" v-if="scope.row.status === 1">上线</el-tag>
@@ -34,7 +38,7 @@
           </template>
         </el-table-column>
         <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" width="300px">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
             <el-button type="primary" @click="$router.push('/editVideo?videoId=' + scope.row.videoId)">编辑</el-button>

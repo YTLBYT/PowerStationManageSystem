@@ -38,7 +38,7 @@
           </template>
         </el-table-column>
         <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" width="200px">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
             <el-button type="primary" @click="$router.push('/editStation?stationNumber=' + scope.row.stationNumber + '&stationId=' + scope.row.stationId)">编辑</el-button>
@@ -145,7 +145,7 @@ export default {
      * @param row
      */
     changeStatus(row){
-      request.put('/station/update', row).then(res => {
+      request.put('/station/updateStatus', row).then(res => {
         if (res.code === '200') {
           this.$notify.success('操作成功')
           this.load()

@@ -28,8 +28,8 @@
                 :cell-style="rowStyle"
                 stripe row-key="userId"
                 default-expand-all>
-        <el-table-column prop="userId" label="序号" width="80" align="center"></el-table-column>
-        <el-table-column prop="userName" label="用户名" align="center"></el-table-column>
+        <el-table-column prop="userId" label="序号" width="100px" align="center"></el-table-column>
+        <el-table-column prop="userName" label="用户名" width="100px" align="center"></el-table-column>
         <el-table-column prop="telephone" label="手机号" align="center"></el-table-column>
         <el-table-column label="角色" align="center">
           <template slot-scope="scope">
@@ -58,7 +58,7 @@
           </template>
         </el-table-column>
         <!--      <el-table-column prop="updatetime" label="更新时间"></el-table-column>-->
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" width="300px">
           <template v-slot="scope">
             <!--          scope.row 就是当前行数据-->
             <el-button type="primary" @click="$router.push('/userEdit?userId=' + scope.row.userId)">编辑</el-button>

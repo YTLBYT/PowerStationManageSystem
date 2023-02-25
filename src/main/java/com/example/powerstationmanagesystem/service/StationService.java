@@ -16,4 +16,5 @@ public interface StationService {
     public Integer deleteStation(Integer stationId);
     public List<Object> getTreeCars();
     public List<Integer> getDefaultCars(Integer stationId);
+    public Integer updateStatus(Station station);
 }

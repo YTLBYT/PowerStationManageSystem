@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
 import com.example.powerstationmanagesystem.controller.request.StationRequest;
 import com.example.powerstationmanagesystem.dao.StationDao;
+import com.example.powerstationmanagesystem.dao.VideoDao;
 import com.example.powerstationmanagesystem.entiy.Car;
 import com.example.powerstationmanagesystem.entiy.LoginDTO;
 import com.example.powerstationmanagesystem.entiy.Station;
@@ -19,6 +20,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
 
+/**
+ * @author 杨涛
+ */
 @Service
 public class StationServiceImpl implements StationService {
 
@@ -26,6 +30,8 @@ public class StationServiceImpl implements StationService {
     StationDao stationDao;
     @Resource
     private SqlSessionTemplate sqlSessionTemplate;
+    @Resource
+    private VideoDao videoDao;
 
     @Override
     public int addStation(Station station) {
@@ -38,7 +44,7 @@ public class StationServiceImpl implements StationService {
         //在插入之后把id返回回来
         Station station1 = stationDao.selectStationByNumber(station.getStationNumber());
         //利用sqlbatch增快批量插入速度
-        SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);//跟上述sql区别
+        SqlSession sqlSession = sqlSessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);
         StationDao mapper = sqlSession.getMapper(StationDao.class);
         List<Integer> carIdList = station.getCarIdList();
         for (Integer carId:carIdList) {
@@ -60,6 +66,9 @@ public class StationServiceImpl implements StationService {
     public Object selectPageStation(StationRequest stationRequest) {
         PageHelper.startPage(stationRequest.getPageNum(), stationRequest.getPageSize());
         List<Station> stations = stationDao.selectPageStation(stationRequest);
+        for (Station station : stations){
+            station.setVideoUrl(videoDao.getVideoUrlByStationNumber(station.getStationNumber()));
+        }
         return new PageInfo<>(stations);
     }
 
@@ -82,6 +91,11 @@ public class StationServiceImpl implements StationService {
         sqlSession.commit();
         //清楚缓存
         sqlSession.clearCache();
+        return stationDao.updateStation(station);
+    }
+
+    @Override
+    public Integer updateStatus(Station station){
         return stationDao.updateStation(station);
     }
 

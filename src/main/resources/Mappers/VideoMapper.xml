@@ -17,7 +17,7 @@
         update sys_video set status = 1 where video_id = #{videoId};
     </update>
     <update id="offline">
-        update sys_video set status = 0
+        update sys_video set status = 0 where station_number = #{stationNumber}
     </update>
     <delete id="deleteVideo">
         delete from sys_video where video_Id = #{videoId}
@@ -36,6 +36,9 @@
 
     <select id="getVideoById" resultType="com.example.powerstationmanagesystem.entiy.Video">
         select * from sys_video where video_id = #{videoId}
+    </select>
+    <select id="getVideoUrlByStationNumber" resultType="java.lang.String">
+        select video_url from sys_video where station_number = #{stationNumber} and status = 1
     </select>
 
 </mapper>

@@ -44,9 +44,9 @@ public class Station{
     private Integer chargeTotal;
 
     /**
-     * 视频流id
+     * 视频流地址
      */
-    private Integer videoId;
+    private String videoUrl;
 
     /**
      * 换电站状态

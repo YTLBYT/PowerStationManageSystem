@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="完成电站对多种车辆的级联选择">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/VideoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/VideoRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/VideoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/video/videoAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/src/views/video/videoEdit.vue" afterDir="false" />
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="上传数据库文件">
+      <change afterPath="$PROJECT_DIR$/web端接口.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Video.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/trouble.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/trouble/trouble.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/trouble/trouble.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/user/userEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/user/userEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/common/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/StationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/VideoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/StationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/StationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/VideoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/VideoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/user/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/user/user.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/src/views/video/video.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/video/video.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +58,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="3" />
+  </component>
   <component name="ProjectId" id="2LVHzV0kUCaze5JkxCSkrYz3J6J" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vue/src/views/car" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -146,7 +152,13 @@
       <workItem from="1676269076941" duration="17947000" />
       <workItem from="1677025491508" duration="70000" />
       <workItem from="1677028382920" duration="1252000" />
-      <workItem from="1677152169076" duration="7538000" />
+      <workItem from="1677152169076" duration="8495000" />
+      <workItem from="1677226594755" duration="134000" />
+      <workItem from="1677226748313" duration="1641000" />
+      <workItem from="1677230073580" duration="492000" />
+      <workItem from="1677231319646" duration="11000" />
+      <workItem from="1677285541151" duration="702000" />
+      <workItem from="1677286265642" duration="6065000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -190,7 +202,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676291761966</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="完成视频管理，静态实现权限分配">
+      <created>1677159828843</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1677159828843</updated>
+    </task>
+    <task id="LOCAL-00008" summary="完成视频管理，静态实现权限分配">
+      <created>1677159945980</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1677159945980</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +251,7 @@
     <MESSAGE value="基本管理搭建完成" />
     <MESSAGE value="登录、车辆管理、可视化完成" />
     <MESSAGE value="完成电站对多种车辆的级联选择" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成电站对多种车辆的级联选择" />
+    <MESSAGE value="完成视频管理，静态实现权限分配" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成视频管理，静态实现权限分配" />
   </component>
 </project>

@@ -2,6 +2,9 @@ package com.example.powerstationmanagesystem.common;
 
 import lombok.Data;
 
+/**
+ * @author 杨涛
+ */
 @Data
 //定义该类包装我们返回的数据，统一返回数据类型为Result类
 public class Result {
