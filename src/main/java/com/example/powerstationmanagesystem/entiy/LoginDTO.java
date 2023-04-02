@@ -33,4 +33,6 @@ public class LoginDTO {
      * 状态
      */
     private Integer status;
+
+    private String token;
 }

@@ -1,6 +1,7 @@
 package com.example.powerstationmanagesystem.service.serviceImpl;
 
 import com.example.powerstationmanagesystem.Exception.ServiceException;
+import com.example.powerstationmanagesystem.Utils.TokenUtils;
 import com.example.powerstationmanagesystem.controller.request.LoginRequest;
 import com.example.powerstationmanagesystem.controller.request.PasswordRequest;
 import com.example.powerstationmanagesystem.controller.request.UserRequest;
@@ -75,6 +76,7 @@ public class UserServiceImpl implements UserService {
         if (user.getStatus() == 0){
             throw new ServiceException("当前用户被禁用");
         }
+        user.setToken(TokenUtils.sign(loginRequest));
         return user;
     }
 

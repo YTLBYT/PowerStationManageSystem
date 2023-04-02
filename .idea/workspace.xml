@@ -7,13 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="修复一些bug">
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="手机号可以相同的bug">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/Utils/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/config/WebConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/interceptor/TokenInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/LoginDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/utils/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -70,7 +72,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../attendances-master/attendances-master/java-service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -89,6 +91,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.PowerStationManageSystemApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PowerStationManageSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PowerStationManageSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.powerstationmanagesystem.PowerStationManageSystemApplication" />
@@ -138,7 +151,17 @@
       <workItem from="1677231319646" duration="11000" />
       <workItem from="1677285541151" duration="702000" />
       <workItem from="1677286265642" duration="6279000" />
-      <workItem from="1677306063507" duration="1309000" />
+      <workItem from="1677306063507" duration="1444000" />
+      <workItem from="1677307989480" duration="71000" />
+      <workItem from="1677308651653" duration="229000" />
+      <workItem from="1677312526691" duration="146000" />
+      <workItem from="1677312688153" duration="710000" />
+      <workItem from="1677334271785" duration="245000" />
+      <workItem from="1677508472493" duration="64000" />
+      <workItem from="1677563023836" duration="15000" />
+      <workItem from="1677737071419" duration="38000" />
+      <workItem from="1677737189011" duration="29000" />
+      <workItem from="1680438495110" duration="5555000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -203,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677292725104</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="手机号可以相同的bug">
+      <created>1677307497863</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1677307497863</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +270,7 @@
     <MESSAGE value="完成电站对多种车辆的级联选择" />
     <MESSAGE value="完成视频管理，静态实现权限分配" />
     <MESSAGE value="修复一些bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复一些bug" />
+    <MESSAGE value="手机号可以相同的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="手机号可以相同的bug" />
   </component>
 </project>
