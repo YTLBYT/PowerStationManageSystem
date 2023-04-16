@@ -3,6 +3,7 @@ package com.example.powerstationmanagesystem.controller;
 import com.example.powerstationmanagesystem.common.Result;
 import com.example.powerstationmanagesystem.controller.request.LoginRequest;
 import com.example.powerstationmanagesystem.controller.request.PasswordRequest;
+import com.example.powerstationmanagesystem.controller.request.PersonRequest;
 import com.example.powerstationmanagesystem.controller.request.UserRequest;
 import com.example.powerstationmanagesystem.entiy.User;
 import com.example.powerstationmanagesystem.service.UserService;
@@ -54,7 +55,13 @@ public class UserController {
     }
 
     @PutMapping("/person")
-    public Result personUpdate(@RequestBody PasswordRequest passwordRequest){
-        return Result.success(userService.personUpdate(passwordRequest));
+    public Result personUpdate(@RequestBody PersonRequest personRequest){
+        return Result.success(userService.personUpdate(personRequest));
+    }
+
+    @PutMapping("/editPassword")
+    public Result editPassword(@RequestBody PasswordRequest passwordRequest){
+        userService.editPassword(passwordRequest);
+        return Result.success();
     }
 }

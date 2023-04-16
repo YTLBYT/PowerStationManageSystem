@@ -2,6 +2,7 @@ package com.example.powerstationmanagesystem.dao;
 
 import com.example.powerstationmanagesystem.controller.request.LoginRequest;
 import com.example.powerstationmanagesystem.controller.request.PasswordRequest;
+import com.example.powerstationmanagesystem.controller.request.PersonRequest;
 import com.example.powerstationmanagesystem.controller.request.UserRequest;
 import com.example.powerstationmanagesystem.entiy.LoginDTO;
 import com.example.powerstationmanagesystem.entiy.User;
@@ -19,5 +20,6 @@ public interface UserDao {
     public User getUserByTelephone(String telephone);
     public Integer resetUserPassword(Integer Userid);
     public LoginDTO login(LoginRequest loginRequest);
-    public Integer personUpdate(PasswordRequest passwordRequest);
+    public Integer personUpdate(PersonRequest personRequest);
+    public Integer editPassword(PasswordRequest passwordRequest);
 }

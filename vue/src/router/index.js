@@ -59,11 +59,6 @@ const routes = [
                 name: 'EditStation',
                 component: () => import('@/views/station/stationEdit')
             },
-            {
-                path:'addStation',
-                name: 'AddStation',
-                component: () => import('@/views/station/stationAdd')
-            },
             //========故障管理========
             {
                 path:'trouble',

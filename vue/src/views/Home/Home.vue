@@ -47,7 +47,7 @@
         </el-col>
       </el-row>
     </div>
-    <div id="main" style="margin-top: 100px; height: 800px; width: 2400px"></div>
+    <div id="main" style="margin-top: 100px; height: 680px; width: 1800px"></div>
   </div>
 </template>
 

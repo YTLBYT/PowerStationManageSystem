@@ -1,9 +1,11 @@
 package com.example.powerstationmanagesystem.service.serviceImpl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.example.powerstationmanagesystem.Exception.ServiceException;
 import com.example.powerstationmanagesystem.Utils.TokenUtils;
 import com.example.powerstationmanagesystem.controller.request.LoginRequest;
 import com.example.powerstationmanagesystem.controller.request.PasswordRequest;
+import com.example.powerstationmanagesystem.controller.request.PersonRequest;
 import com.example.powerstationmanagesystem.controller.request.UserRequest;
 import com.example.powerstationmanagesystem.dao.UserDao;
 import com.example.powerstationmanagesystem.entiy.LoginDTO;
@@ -81,12 +83,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer personUpdate(PasswordRequest passwordRequest) {
-        User userByTelephone = userDao.getUserByTelephone(passwordRequest.getTelephone());
-        if ( userByTelephone != null && !userByTelephone.getUserId().equals(passwordRequest.getUserId())){
+    public Integer personUpdate(PersonRequest personRequest) {
+        User userByTelephone = userDao.getUserByTelephone(personRequest.getTelephone());
+        if ( userByTelephone != null && !userByTelephone.getUserId().equals(personRequest.getUserId())){
             throw new ServiceException("该手机号账号已经存在");
         }
-        Integer integer = userDao.personUpdate(passwordRequest);
+        Integer integer = userDao.personUpdate(personRequest);
         if (integer == 0){
             throw new ServiceException("密码错误");
         }
@@ -98,5 +100,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByTelephone(String telephone) {
         return userDao.getUserByTelephone(telephone);
+    }
+
+    @Override
+    public Integer editPassword(PasswordRequest passwordRequest) {
+        User user = getUserById(passwordRequest.getUserId());
+        if (user.getUserPassword().equals(passwordRequest.getPassword())){
+            return userDao.editPassword(passwordRequest);
+        }
+        else {
+            throw new ServiceException("旧密码输入错误");
+        }
     }
 }
