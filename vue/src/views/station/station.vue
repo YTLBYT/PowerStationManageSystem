@@ -18,15 +18,15 @@
                 stripe row-key="stationId"
                 default-expand-all>
         <el-table-column prop="stationId" label="序号" width="80" align="center"></el-table-column>
-        <el-table-column prop="stationNumber" label="换电站编号" align="center"></el-table-column>
+        <el-table-column prop="stationNumber" label="换电站编号" align="center" width="200px"></el-table-column>
         <el-table-column prop="stationName" label="换电站名称" align="center"></el-table-column>
         <el-table-column prop="stationAddress" label="换电站地址" align="center"></el-table-column>
-        <el-table-column prop="stationAltitude" label="换电站经纬度" align="center"></el-table-column>
+        <el-table-column prop="stationAltitude" label="换电站经纬度" align="center" width="200px"></el-table-column>
         <el-table-column prop="stationServetime" label="换电站服务时长" align="center"></el-table-column>
         <el-table-column prop="stationFee" label="换电站平均消费" align="center"></el-table-column>
         <el-table-column prop="chargeNumber" label="可用电池数量" align="center"></el-table-column>
         <el-table-column prop="chargeTotal" label="总电池数量" align="center"></el-table-column>
-        <el-table-column prop="videoUrl" label="视频流地址" align="center"></el-table-column>
+        <el-table-column prop="videoUrl" label="视频流地址" align="center" width="200px"></el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template v-slot="scope">
             <el-switch
@@ -68,22 +68,22 @@
       </div>
 
       <div v-if="dialogFormVisible">
-        <el-dialog title="新增电站" :visible.sync="dialogFormVisible" width="700px" center>
-          <el-form :inline="true" :model="form" :rules="rules" ref="ruleForm" label-width="100px">
+        <el-dialog title="新增电站" :visible.sync="dialogFormVisible" width="50%" center>
+          <el-form :model="form" :rules="rules" ref="ruleForm" label-width="120px" inline>
             <el-form-item label="换电站名称" prop="stationName">
               <el-input v-model="form.stationName" placeholder="请输入换电站名称"></el-input>
             </el-form-item>
             <el-form-item label="换电站地址" prop="stationAddress">
-              <el-input v-model="form.stationAddress" placeholder="请输入换电站地址"></el-input>
-            </el-form-item>
-            <el-form-item label="换电站经纬度" prop="stationAltitude">
-              <el-input v-model="form.stationAltitude" placeholder="请输入换电站经纬度"></el-input>
+              <el-input v-model="form.stationAddress" placeholder="请输入换电站地址" @blur="getAltitude"></el-input>
             </el-form-item>
             <el-form-item label="换电站服务时长" prop="stationServetime">
               <el-input v-model="form.stationServetime" placeholder="请输入换电站服务时长"></el-input>
             </el-form-item>
             <el-form-item label="换电站平均消费" prop="stationFee">
               <el-input v-model="form.stationFee" placeholder="请输入换电站平均消费"></el-input>
+            </el-form-item>
+            <el-form-item label="换电站经纬度" prop="stationAltitude">
+              <el-input v-model="form.stationAltitude" placeholder="输入地址后自动获取" disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="总电池数量" prop="chargeTotal">
               <el-input v-model="form.chargeTotal" placeholder="请输入总电池数量"></el-input>
@@ -107,8 +107,10 @@
 </template>
 
 <script>
-import request from "@/utils/request";
+
 import Cookies from 'js-cookie'
+import http from "axios";
+import request from "@/utils/request";
 
 export default {
   name: 'Station',
@@ -206,6 +208,16 @@ export default {
       })
     },
 
+    getAltitude(){
+      console.log(111111)
+      http.get("https://restapi.amap.com/v3/geocode/geo?key=8f6496b4fdf34c804a0dc98f1f5cd308&address=" + this.form.stationAddress)
+          .then(res => {
+            console.log(res.data["geocodes"][0]["location"]);
+            this.form.stationAltitude = res.data["geocodes"][0]["location"];
+            console.log(this.form.stationAltitude)
+          })
+    },
+
     save() {
       this.form.carIdList = []
       for (let i = 0; i < this.carIds.length; i++){
@@ -219,8 +231,8 @@ export default {
           this.$notify.error(res.msg)
         }
       })
-      this.load();
       this.dialogFormVisible = false;
+      this.load();
     },
 
     //添加函数，跳转到添加列表
@@ -230,7 +242,9 @@ export default {
           this.options = res.data
         }
       })
-      this.dialogFormVisible = true
+      this.form = {};
+      this.form.stationAltitude = '';
+      this.dialogFormVisible = true;
     },
 
     //风格函数，使文字居中

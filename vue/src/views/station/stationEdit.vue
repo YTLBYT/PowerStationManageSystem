@@ -16,7 +16,7 @@
           <el-input v-model="form.stationName" placeholder="请输入换电站名称"></el-input>
         </el-form-item>
         <el-form-item label="换电站地址">
-          <el-input v-model="form.stationAddress" placeholder="请输入换电站地址"></el-input>
+          <el-input v-model="form.stationAddress" placeholder="请输入换电站地址" @blur="getAltitude()"></el-input>
         </el-form-item>
         <el-form-item label="换电站经纬度" prop="stationAltitude">
           <el-input v-model="form.stationAltitude" placeholder="请输入换电站经纬度"></el-input>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import http from 'axios'
 import request from "@/utils/request";
 
 export default {
@@ -108,8 +109,13 @@ export default {
       this.isSelected = false
       this.defaultCars = val
       this.isSelected = true
-    }
-
+    },
+    getAltitude(){
+      http.get("https://restapi.amap.com/v3/geocode/geo?key=8f6496b4fdf34c804a0dc98f1f5cd308&address=" + this.form.stationAddress)
+          .then(res => {
+            this.form.stationAltitude = res.data["geocodes"][0]["location"];
+          })
+    },
   }
 }
 

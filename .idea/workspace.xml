@@ -7,11 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="优化信息修改和密码修改">
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="增加字段">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/Utils/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/Utils/TokenUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power.sql" beforeDir="false" afterPath="$PROJECT_DIR$/power.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/utils/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
     </list>
@@ -93,7 +93,7 @@
       <recent name="com.example.powerstationmanagesystem.common" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager" selected="Spring Boot.PowerStationManageSystemApplication">
     <configuration name="PowerStationManageSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PowerStationManageSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.powerstationmanagesystem.PowerStationManageSystemApplication" />
@@ -211,7 +211,10 @@
       <workItem from="1681715049227" duration="23000" />
       <workItem from="1681715092997" duration="127000" />
       <workItem from="1681715526043" duration="149000" />
-      <workItem from="1681719728279" duration="2127000" />
+      <workItem from="1681719728279" duration="2349000" />
+      <workItem from="1681722282240" duration="878000" />
+      <workItem from="1681723184581" duration="31000" />
+      <workItem from="1681731960506" duration="4508000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -297,7 +300,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681644269495</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="增加字段">
+      <created>1681722060307</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681722060307</updated>
+    </task>
+    <task id="LOCAL-00014" summary="增加字段">
+      <created>1681722110572</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681722110572</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +354,7 @@
     <MESSAGE value="手机号可以相同的bug" />
     <MESSAGE value="利用jwt加入token" />
     <MESSAGE value="优化信息修改和密码修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化信息修改和密码修改" />
+    <MESSAGE value="增加字段" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加字段" />
   </component>
 </project>

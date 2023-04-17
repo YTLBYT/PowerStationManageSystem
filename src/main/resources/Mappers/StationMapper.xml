@@ -15,7 +15,7 @@
     <update id="updateStation">
         update sys_station set station_name=#{stationName}, station_address=#{stationAddress},
                                charge_total=#{chargeTotal}, charge_number=#{chargeNumber},
-                               status = #{status}, station_altitude=#{stationAltitude}
+                               status = #{status}, station_altitude=#{stationAltitude},
                                station_servetime=#{stationServetime}, station_fee=#{stationFee}
         where station_id = #{stationId}
     </update>
