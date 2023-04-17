@@ -7,23 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="利用jwt加入token">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PersonRequest.java" afterDir="false" />
+    <list default="true" id="fc4aa9cc-97fe-4c2f-a568-4e22ae00a614" name="Default Changelist" comment="优化信息修改和密码修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/config/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/config/WebConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/controller/request/PasswordRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/Home/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Home/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/car/car.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/car/car.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/Utils/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/Utils/TokenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/powerstationmanagesystem/entiy/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mappers/StationMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/src/views/station/station.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/station.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationAdd.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/views/user/Person.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/user/Person.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/views/station/stationEdit.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +81,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="D:\ideaIC-2021.2\IntelliJ IDEA 2021.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -102,18 +93,7 @@
       <recent name="com.example.powerstationmanagesystem.common" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.PowerStationManageSystemApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="npm.serve">
     <configuration name="PowerStationManageSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PowerStationManageSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.powerstationmanagesystem.PowerStationManageSystemApplication" />
@@ -223,7 +203,15 @@
       <workItem from="1681631308641" duration="25000" />
       <workItem from="1681634349648" duration="9000" />
       <workItem from="1681634436395" duration="46000" />
-      <workItem from="1681640936436" duration="2991000" />
+      <workItem from="1681640936436" duration="3352000" />
+      <workItem from="1681695096302" duration="1368000" />
+      <workItem from="1681700102867" duration="29000" />
+      <workItem from="1681712955925" duration="51000" />
+      <workItem from="1681714727133" duration="24000" />
+      <workItem from="1681715049227" duration="23000" />
+      <workItem from="1681715092997" duration="127000" />
+      <workItem from="1681715526043" duration="149000" />
+      <workItem from="1681719728279" duration="2127000" />
     </task>
     <task id="LOCAL-00001" summary="1111">
       <created>1675950302346</created>
@@ -302,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680444136806</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="优化信息修改和密码修改">
+      <created>1681644269495</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681644269495</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,6 +336,7 @@
     <MESSAGE value="修复一些bug" />
     <MESSAGE value="手机号可以相同的bug" />
     <MESSAGE value="利用jwt加入token" />
-    <option name="LAST_COMMIT_MESSAGE" value="利用jwt加入token" />
+    <MESSAGE value="优化信息修改和密码修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化信息修改和密码修改" />
   </component>
 </project>

@@ -8,7 +8,7 @@
       </el-breadcrumb>
     </div>
     <div style="margin-top: 30px">
-      <el-form :inline="true" :model="form" label-width="100px">
+      <el-form :inline="true" :model="form" label-width="150px">
         <el-form-item label="换电站编号">
           <el-input v-model="form.stationNumber" disabled></el-input>
         </el-form-item>
@@ -17,6 +17,15 @@
         </el-form-item>
         <el-form-item label="换电站地址">
           <el-input v-model="form.stationAddress" placeholder="请输入换电站地址"></el-input>
+        </el-form-item>
+        <el-form-item label="换电站经纬度" prop="stationAltitude">
+          <el-input v-model="form.stationAltitude" placeholder="请输入换电站经纬度"></el-input>
+        </el-form-item>
+        <el-form-item label="换电站服务时长" prop="stationServetime">
+          <el-input v-model="form.stationServetime" placeholder="请输入换电站服务时长"></el-input>
+        </el-form-item>
+        <el-form-item label="换电站平均消费" prop="stationFee">
+          <el-input v-model="form.stationFee" placeholder="请输入换电站平均消费"></el-input>
         </el-form-item>
         <el-form-item label="可用电池数量">
           <el-input v-model="form.chargeNumber" placeholder="请输入可用电池数量"></el-input>

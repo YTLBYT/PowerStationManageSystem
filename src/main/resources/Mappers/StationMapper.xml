@@ -5,8 +5,8 @@
 <mapper namespace="com.example.powerstationmanagesystem.dao.StationDao">
 
     <insert id="addStation">
-        insert into sys_station(station_number, station_name, station_address, charge_number, charge_total)
-        values (#{stationNumber}, #{stationName}, #{stationAddress}, #{chargeNumber}, #{chargeTotal})
+        insert into sys_station(station_number, station_name, station_address, charge_number, charge_total, station_altitude, station_servetime, station_fee)
+        values (#{stationNumber}, #{stationName}, #{stationAddress}, #{chargeNumber}, #{chargeTotal}, #{stationAltitude}, #{stationServetime}, #{stationFee})
     </insert>
     <insert id="addStationToCars">
         insert into sys_station_car(station_id, car_id)
@@ -15,7 +15,9 @@
     <update id="updateStation">
         update sys_station set station_name=#{stationName}, station_address=#{stationAddress},
                                charge_total=#{chargeTotal}, charge_number=#{chargeNumber},
-                               status = #{status} where station_id = #{stationId}
+                               status = #{status}, station_altitude=#{stationAltitude}
+                               station_servetime=#{stationServetime}, station_fee=#{stationFee}
+        where station_id = #{stationId}
     </update>
     <delete id="deleteStation">
         delete from sys_station where station_id = #{stationId}

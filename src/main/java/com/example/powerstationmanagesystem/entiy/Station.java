@@ -53,6 +53,21 @@ public class Station{
      */
     private Integer status;
 
+    /**
+     * 换电站经纬度，根据地址获取，也可以认为修改
+     */
+    private String stationAltitude;
+
+    /**
+     * 换电站服务时长
+     */
+    private String stationServetime;
+
+    /**
+     * 服务平均消费
+     */
+    private String stationFee;
+
     private List<Integer> carIdList;
 
     public Station() {}

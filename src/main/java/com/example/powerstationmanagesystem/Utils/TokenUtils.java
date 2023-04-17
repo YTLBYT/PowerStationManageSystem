@@ -48,7 +48,6 @@ public class TokenUtils {
      */
     public static Boolean verify(String token){
         System.out.println(token);
-
         try {
             //创建token验证器
             JWTVerifier jwtVerifier=JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
